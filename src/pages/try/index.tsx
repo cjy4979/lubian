@@ -12,7 +12,7 @@ export default function index() {
 
     //首次挂载加载数据
     useEffect(() => {
-        fetch('/api/schedule?type=半决&page=1&size=4').then(
+        fetch('/api/schedule?type=预赛&page=1&size=4').then(
             response => response.json()
         ).then(
             data => {

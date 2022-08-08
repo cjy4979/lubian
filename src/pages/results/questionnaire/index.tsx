@@ -7,14 +7,12 @@ export default function questionnaire() {
     return (
         <div className={styles.ques_bg}>
             <div className={styles.content_wrap}>
-                <div className={styles.contents}>
-                    <div className={styles.online}>
-                        <img src={onlineLogo} alt="logo" style={{ height: "100%", width: "100%" }} />
-                    </div>
-                    <div className={styles.ques_title}>
-                        深语10.0赛果收集
+                <div className={styles.ques_title}>
+                    第二届鲁辩齐思辩论赛赛果收集
                 </div>
-                <Ques/>
+                <div className={styles.contents}> 
+
+                    <Ques />
                 </div>
 
             </div>

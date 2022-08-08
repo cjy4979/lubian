@@ -23,7 +23,7 @@ export default function index() {
 
         <Content>
           <div> 
-            <Title>深语10.0赛事系统使用指南</Title>
+            <Title>鲁辩赛事系统使用指南</Title>
           </div>
           <div>
             

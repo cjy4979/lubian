@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import onlineLogo from '../../images/online.png'
+import Logo from '../../images/lubianLogo.png'
 import styles from './Login.less'
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox, Card, message } from 'antd';
@@ -20,17 +20,17 @@ export default function Login(props: { history: string[]; }) {
                 })
             }
         }
-    },[])
+    }, [])
     // 判断浏览器函数
     // function isMobile() {
     //     if (window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
     //         props.history.push('/statisitcs');//跳转
     //         return true; // 移动端
-            
+
     //     } else {
     //         props.history.push('/statistics');//跳转
     //         return false; // PC端
-            
+
     //     }
     // }
 
@@ -47,10 +47,10 @@ export default function Login(props: { history: string[]; }) {
             }).then(
                 response => response.json()
             ).then(
-                data =>{
-                    if(data.status === 0){
+                data => {
+                    if (data.status === 0) {
                         message.success('登录成功');
-                        setCookie('rights',data.data)
+                        setCookie('rights', data.data)
                         if (checkType === true) {
                             //记住密码
                             setCookie('username', values.username);
@@ -67,7 +67,7 @@ export default function Login(props: { history: string[]; }) {
                         }
                         props.history.push('/statistics');//跳转
 
-                    }else {
+                    } else {
                         message.info('用户名或密码错误');
                     }
                 }
@@ -82,11 +82,10 @@ export default function Login(props: { history: string[]; }) {
     return (
         <div className={styles.bg} >
             <div className={styles.main} >
-                <img className={styles.logo} src={onlineLogo} alt="online" />
-
-                <p className={styles.title} >深语10.0-萌宠主题</p>
+                <img className={styles.logo} src={Logo} alt="鲁辩" />
 
                 <Card className={styles.card}>
+                    <p className={styles.title} >第二届鲁辩齐思辩论赛</p>
                     <Form
                         form={form}
                         name="normal_login"
@@ -137,7 +136,7 @@ export default function Login(props: { history: string[]; }) {
                         <Form.Item>
                             <Button type="primary" danger htmlType="submit" className="login-form-button" style={{ width: "40%" }}>
                                 登录
-                                </Button>
+                            </Button>
                         </Form.Item>
                     </Form>
                 </Card>

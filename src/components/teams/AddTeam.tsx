@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import styles from './AddTeam.less'
 import { Toast } from '@douyinfe/semi-ui';
 import * as XLSX from 'xlsx';
@@ -11,39 +11,38 @@ export default class AddTeam extends Component<any, any> {
         team: '',
         leader: '', //领队信息
         phone: '',
-        wechat: '',
         QQ: '',
         member1: '', //成员1
         debate1: '',
-        theme1: '',
+        grade1: '',
         school1: '',
         member2: '', //成员2
         debate2: '',
-        theme2: '',
+        grade2: '',
         school2: '',
         member3: '', //成员3
         debate3: '',
-        theme3: '',
+        grade3: '',
         school3: '',
         member4: '', //成员4
         debate4: '',
-        theme4: '',
+        grade4: '',
         school4: '',
         member5: '', //成员5
         debate5: '',
-        theme5: '',
+        grade5: '',
         school5: '',
         member6: '', //成员6
         debate6: '',
-        theme6: '',
+        grade6: '',
         school6: '',
         member7: '', //成员7
         debate7: '',
-        theme7: '',
+        grade7: '',
         school7: '',
         member8: '', //成员8
         debate8: '',
-        theme8: '',
+        grade8: '',
         school8: '',
         topic1: '', //辩题1
         explanation1: '',
@@ -76,46 +75,45 @@ export default class AddTeam extends Component<any, any> {
             var sheet = workbook.Sheets.Sheet1
             var data = {
                 team: sheet.D9 ? sheet.D9.v : '',
-                leader: sheet.D11 ? sheet.D11.v : '', //领队信息
-                phone: sheet.G11 ? sheet.G11.v : '',
-                wechat: sheet.K11 ? sheet.K11.v : '',
-                QQ: sheet.O11 ? sheet.O11.v : '',
-                member1: sheet.C14 ? sheet.C14.v : '', //成员1
-                debate1: sheet.J14 ? sheet.J14.v : '',
-                theme1: sheet.N14 ? sheet.N14.v : '',
-                school1: sheet.G14 ? sheet.G14.v : '',
-                member2: sheet.C15 ? sheet.C15.v : '', //成员2
-                debate2: sheet.J15 ? sheet.J15.v : '',
-                theme2: sheet.N15 ? sheet.N15.v : '',
-                school2: sheet.G15 ? sheet.G15.v : '',
-                member3: sheet.C16 ? sheet.C16.v : '', //成员3
-                debate3: sheet.J16 ? sheet.J16.v : '',
-                theme3: sheet.N16 ? sheet.N16.v : '',
-                school3: sheet.G16 ? sheet.G16.v : '',
-                member4: sheet.C17 ? sheet.C17.v : '', //成员4
-                debate4: sheet.J17 ? sheet.J17.v : '',
-                theme4: sheet.N17 ? sheet.N17.v : '',
-                school4: sheet.G17 ? sheet.G17.v : '',
-                member5: sheet.C18 ? sheet.C18.v : '', //成员5
-                debate5: sheet.J18 ? sheet.J18.v : '',
-                theme5: sheet.N18 ? sheet.N18.v : '',
-                school5: sheet.G18 ? sheet.G18.v : '',
-                member6: sheet.C19 ? sheet.C19.v : '', //成员6
-                debate6: sheet.J19 ? sheet.J19.v : '',
-                theme6: sheet.N19 ? sheet.N19.v : '',
-                school6: sheet.G19 ? sheet.G19.v : '',
-                member7: sheet.C20 ? sheet.C20.v : '', //成员7
-                debate7: sheet.J20 ? sheet.J20.v : '',
-                theme7: sheet.N20 ? sheet.N20.v : '',
-                school7: sheet.G20 ? sheet.G20.v : '',
-                member8: sheet.C21 ? sheet.C21.v : '', //成员8
-                debate8: sheet.J21 ? sheet.J21.v : '',
-                theme8: sheet.N21 ? sheet.N21.v : '',
-                school8: sheet.G21 ? sheet.G21.v : '',
-                // topic1: sheet.D23 ? sheet.D23.v : '', //辩题1
-                // explanation1: sheet.D24 ? sheet.D24.v : '',
-                // topic2: sheet.D25 ? sheet.D25.v : '', //辩题2
-                // explanation2: sheet.D26 ? sheet.D26.v : '',
+                leader: sheet.D12 ? sheet.D12.v : '', //领队信息
+                phone: sheet.H12 ? sheet.H12.v : '',
+                QQ: sheet.L12 ? sheet.L12.v : '',
+                member1: sheet.C15 ? sheet.C15.v : '', //成员1
+                debate1: sheet.J15 ? sheet.J15.v : '',
+                grade1: sheet.F15 ? sheet.F15.v : '',
+                school1: sheet.G15 ? sheet.G15.v : '',
+                member2: sheet.C16 ? sheet.C16.v : '', //成员2
+                debate2: sheet.J16 ? sheet.J16.v : '',
+                grade2: sheet.F16 ? sheet.F16.v : '',
+                school2: sheet.G16 ? sheet.G16.v : '',
+                member3: sheet.C17 ? sheet.C17.v : '', //成员3
+                debate3: sheet.J17 ? sheet.J17.v : '',
+                grade3: sheet.F17 ? sheet.F17.v : '',
+                school3: sheet.G17 ? sheet.G17.v : '',
+                member4: sheet.C18 ? sheet.C18.v : '', //成员4
+                debate4: sheet.J18 ? sheet.J18.v : '',
+                grade4: sheet.F18 ? sheet.F18.v : '',
+                school4: sheet.G18 ? sheet.G18.v : '',
+                member5: sheet.C19 ? sheet.C19.v : '', //成员5
+                debate5: sheet.J19 ? sheet.J19.v : '',
+                grade5: sheet.F19 ? sheet.F19.v : '',
+                school5: sheet.G19 ? sheet.G19.v : '',
+                member6: sheet.C20 ? sheet.C20.v : '', //成员6
+                debate6: sheet.J20 ? sheet.J20.v : '',
+                grade6: sheet.F20 ? sheet.F20.v : '',
+                school6: sheet.G20 ? sheet.G20.v : '',
+                member7: sheet.C21 ? sheet.C21.v : '', //成员7
+                debate7: sheet.J21 ? sheet.J21.v : '',
+                grade7: sheet.F21 ? sheet.F21.v : '',
+                school7: sheet.G21 ? sheet.G21.v : '',
+                member8: sheet.C22 ? sheet.C22.v : '', //成员8
+                debate8: sheet.J22 ? sheet.J22.v : '',
+                grade8: sheet.F22 ? sheet.F22.v : '',
+                school8: sheet.G22 ? sheet.G22.v : '',
+                topic1: sheet.D24 ? sheet.D24.v : '', //辩题1
+                explanation1: sheet.D25 ? sheet.D25.v : '',
+                topic2: sheet.D26 ? sheet.D26.v : '', //辩题2
+                explanation2: sheet.D27 ? sheet.D27.v : '',
                 status: false
             }
             this.setState(data)
@@ -132,32 +130,31 @@ export default class AddTeam extends Component<any, any> {
                 team: '',
                 leader: '', //领队信息
                 phone: '',
-                wechat: '',
                 QQ: '',
                 member1: '', //成员1
                 debate1: '',
-                theme1: '',
+                grade1: '',
                 member2: '', //成员2
                 debate2: '',
-                theme2: '',
+                grade2: '',
                 member3: '', //成员3
                 debate3: '',
-                theme3: '',
+                grade3: '',
                 member4: '', //成员4
                 debate4: '',
-                theme4: '',
+                grade4: '',
                 member5: '', //成员5
                 debate5: '',
-                theme5: '',
+                grade5: '',
                 member6: '', //成员6
                 debate6: '',
-                theme6: '',
+                grade6: '',
                 member7: '', //成员7
                 debate7: '',
-                theme7: '',
+                grade7: '',
                 member8: '', //成员8
                 debate8: '',
-                theme8: '',
+                grade8: '',
                 topic1: '', //辩题1
                 explanation1: '',
                 topic2: '', //辩题2
@@ -183,37 +180,38 @@ export default class AddTeam extends Component<any, any> {
                 if (data.status === 0) {
                     Toast.success(data.msg)
                     //提交后更新组件，方便继续提交
+                    console.log(data);
+                    
                     this.setState(
                         {
                             team: '',
                             leader: '', //领队信息
                             phone: '',
-                            wechat: '',
                             QQ: '',
                             member1: '', //成员1
                             debate1: '',
-                            theme1: '',
+                            grade1: '',
                             member2: '', //成员2
                             debate2: '',
-                            theme2: '',
+                            grade2: '',
                             member3: '', //成员3
                             debate3: '',
-                            theme3: '',
+                            grade3: '',
                             member4: '', //成员4
                             debate4: '',
-                            theme4: '',
+                            grade4: '',
                             member5: '', //成员5
                             debate5: '',
-                            theme5: '',
+                            grade5: '',
                             member6: '', //成员6
                             debate6: '',
-                            theme6: '',
+                            grade6: '',
                             member7: '', //成员7
                             debate7: '',
-                            theme7: '',
+                            grade7: '',
                             member8: '', //成员8
                             debate8: '',
-                            theme8: '',
+                            grade8: '',
                             topic1: '', //辩题1
                             explanation1: '',
                             topic2: '', //辩题2
@@ -280,10 +278,10 @@ export default class AddTeam extends Component<any, any> {
                                     手机:
                                 </div>
                                 <input id='phone' readOnly value={this.state.phone} />
-                                <div style={{ minWidth: '50px' }}>
+                                {/* <div style={{ minWidth: '50px' }}>
                                     微信:
                                 </div >
-                                <input id='wechat' readOnly value={this.state.wechat} />
+                                <input id='wechat' readOnly value={this.state.wechat} /> */}
                                 <div>
                                     QQ:
                                 </div>
@@ -301,14 +299,14 @@ export default class AddTeam extends Component<any, any> {
                                             <th className={styles.name}>
                                                 姓名
                                             </th>
+                                            <th className={styles.grade}>
+                                                年级
+                                            </th>
                                             <th className={styles.school}>
                                                 学校
                                             </th>
                                             <th className={styles.debate}>
                                                 辩论履历
-                                            </th>
-                                            <th className={styles.theme}>
-                                                主题履历
                                             </th>
                                         </tr>
 
@@ -322,6 +320,12 @@ export default class AddTeam extends Component<any, any> {
                                                     {this.state.debate1 === '3-5条' ? '请检查表格' : this.state.member1}
                                                 </div>
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.state.grade1}
+                                                </div>
+
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.state.school1}
@@ -332,12 +336,7 @@ export default class AddTeam extends Component<any, any> {
                                                     {this.state.debate1}
                                                 </div>
                                             </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.state.theme1}
-                                                </div>
-
-                                            </td>
+                                            
 
                                         </tr>
 
@@ -349,6 +348,11 @@ export default class AddTeam extends Component<any, any> {
                                             <td>
                                                 {this.state.member2}
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.state.grade2}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.state.school2}
@@ -359,11 +363,7 @@ export default class AddTeam extends Component<any, any> {
                                                     {this.state.debate2}
                                                 </div>
                                             </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.state.theme2}
-                                                </div>
-                                            </td>
+                                            
 
                                         </tr>
 
@@ -375,6 +375,11 @@ export default class AddTeam extends Component<any, any> {
                                             <td>
                                                 {this.state.member3}
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.state.grade3}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.state.school3}
@@ -385,11 +390,7 @@ export default class AddTeam extends Component<any, any> {
                                                     {this.state.debate3}
                                                 </div>
                                             </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.state.theme3}
-                                                </div>
-                                            </td>
+                                            
 
                                         </tr>
 
@@ -402,6 +403,11 @@ export default class AddTeam extends Component<any, any> {
                                                 <td>
                                                     {this.state.member4}
                                                 </td>
+                                                <td className={styles.grade1}>
+                                                    <div style={{ width: '90%' }}>
+                                                        {this.state.grade4}
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div style={{ width: '90%' }}>
                                                         {this.state.school4}
@@ -412,11 +418,7 @@ export default class AddTeam extends Component<any, any> {
                                                         {this.state.debate4}
                                                     </div>
                                                 </td>
-                                                <td className={styles.theme1}>
-                                                    <div style={{ width: '90%' }}>
-                                                        {this.state.theme4}
-                                                    </div>
-                                                </td>
+                                               
 
                                             </tr>
                                         }
@@ -430,6 +432,11 @@ export default class AddTeam extends Component<any, any> {
                                                 <td>
                                                     {this.state.member5}
                                                 </td>
+                                                <td className={styles.grade1}>
+                                                    <div style={{ width: '90%' }}>
+                                                        {this.state.grade5}
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div style={{ width: '90%' }}>
                                                         {this.state.school5}
@@ -440,11 +447,7 @@ export default class AddTeam extends Component<any, any> {
                                                         {this.state.debate5}
                                                     </div>
                                                 </td>
-                                                <td className={styles.theme1}>
-                                                    <div style={{ width: '90%' }}>
-                                                        {this.state.theme5}
-                                                    </div>
-                                                </td>
+                                               
 
                                             </tr>
                                         }
@@ -458,6 +461,11 @@ export default class AddTeam extends Component<any, any> {
                                                 <td>
                                                     {this.state.member6}
                                                 </td>
+                                                <td className={styles.grade1}>
+                                                    <div style={{ width: '90%' }}>
+                                                        {this.state.grade6}
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div style={{ width: '90%' }}>
                                                         {this.state.school6}
@@ -468,12 +476,6 @@ export default class AddTeam extends Component<any, any> {
                                                         {this.state.debate6}
                                                     </div>
                                                 </td>
-                                                <td className={styles.theme1}>
-                                                    <div style={{ width: '90%' }}>
-                                                        {this.state.theme6}
-                                                    </div>
-                                                </td>
-
                                             </tr>
                                         }
 
@@ -486,6 +488,11 @@ export default class AddTeam extends Component<any, any> {
                                                 <td>
                                                     {this.state.member7}
                                                 </td>
+                                                <td className={styles.grade1}>
+                                                    <div style={{ width: '90%' }}>
+                                                        {this.state.grade7}
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div style={{ width: '90%' }}>
                                                         {this.state.school7}
@@ -496,12 +503,6 @@ export default class AddTeam extends Component<any, any> {
                                                         {this.state.debate7}
                                                     </div>
                                                 </td>
-                                                <td className={styles.theme1}>
-                                                    <div style={{ width: '90%' }}>
-                                                        {this.state.theme7}
-                                                    </div>
-                                                </td>
-
                                             </tr>
                                         }
 
@@ -514,6 +515,11 @@ export default class AddTeam extends Component<any, any> {
                                                 <td>
                                                     {this.state.member8}
                                                 </td>
+                                                <td className={styles.grade1}>
+                                                    <div style={{ width: '90%' }}>
+                                                        {this.state.grade8}
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div style={{ width: '90%' }}>
                                                         {this.state.school8}
@@ -524,12 +530,6 @@ export default class AddTeam extends Component<any, any> {
                                                         {this.state.debate8}
                                                     </div>
                                                 </td>
-                                                <td className={styles.theme1}>
-                                                    <div style={{ width: '90%' }}>
-                                                        {this.state.theme8}
-                                                    </div>
-                                                </td>
-
                                             </tr>
                                         }
                                     </tbody>
@@ -537,7 +537,7 @@ export default class AddTeam extends Component<any, any> {
                             </div>
 
 
-                            {/* {
+                            {
                                 this.state.topic1 === '' ?
                                     <h1>
                                         无
@@ -589,7 +589,7 @@ export default class AddTeam extends Component<any, any> {
                                             </tbody>
                                         </table>
                                     </div>
-                            } */}
+                            }
 
 
 

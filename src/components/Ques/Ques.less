@@ -1,3 +1,6 @@
+div {
+  color: #cea265;
+}
 
 .question {
   margin-top: 15px;
@@ -84,7 +87,7 @@
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 14px;
   display: -webkit-flex;
   display: flex;
   justify-content: space-around;
@@ -120,11 +123,34 @@
   cursor: pointer;
 }
 
-.submit{
-    margin-bottom:4%;
-    margin-left: 30% ;
-    margin-top:20px;
+.submit {
+  margin-bottom: 4%;
+  margin-left: 20%;
+  margin-top: 20px;
 }
+
+
+.btn {
+  cursor: pointer;
+  margin-bottom: 4%;
+  margin-left:17%;
+  margin-top: 20px;
+  padding: 12px 40px;
+  text-align: center;
+  background-color: rgba(25, 25, 25);
+  transition: 0.5s;
+  border: 1px solid #cea265;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+}
+
 
 
 
@@ -138,7 +164,7 @@
   flex-grow: 1;
 }
 
-.FinalZ{
+.FinalZ {
   width: 40%;
   display: -webkit-flex;
   display: flex;
@@ -149,7 +175,7 @@
   flex-grow: 0;
 }
 
-.FinalF{
+.FinalF {
   width: 40%;
   display: -webkit-flex;
   display: flex;
@@ -177,47 +203,45 @@
   border-radius: 5px;
 }
 
-.FinalDebater:hover{
+.FinalDebater:hover {
   letter-spacing: 3px;
   color: red;
 }
 
 @media screen and (max-width: 500px) {
-    .question {
-      width: auto;
-      height: auto;
-      margin:7%;
-    }
-
-    .q3{
-        width: 100%;
-    }
-  
-    .Q3 {
-      flex-direction: column;
-      align-items: flex-start;
-      margin-left: 5%;
-    }
-    
-    .F{
-        width: 75%;
-        margin-left: 10px;
-    }
-
-    .Z{
-        width: 75%;
-    }
-
-    
-    .submit{
-        margin-left: 40%;
-        margin-bottom: 5%;
-    }
-
-    .qustionText{
-        font-family: 宋体;
-        font-size: 18px;
-    }
+  .question {
+    width: auto;
+    height: auto;
+    margin: 7%;
   }
-  
- 
+
+  .q3 {
+    width: 100%;
+  }
+
+  .Q3 {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5%;
+  }
+
+  .F {
+    width: 75%;
+    margin-left: 10px;
+  }
+
+  .Z {
+    width: 75%;
+  }
+
+
+  .submit {
+    margin-left: 40%;
+    margin-bottom: 5%;
+  }
+
+  .qustionText {
+    font-family: 宋体;
+    font-size: 18px;
+  }
+}

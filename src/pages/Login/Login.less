@@ -7,9 +7,11 @@
 
 .main {
   display: flex;
+  margin-top: 10%;
+  width: 50%;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 .title{
@@ -25,6 +27,17 @@
 }
 
 .logo{
-    margin-top: 5%;
-    width: 75%
+    width: 35%
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    display: flex;
+    width: 100%;
+    margin-top: 10%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: none;
+  }
 }

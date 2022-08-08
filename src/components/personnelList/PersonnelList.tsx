@@ -19,9 +19,11 @@ export default class PersonnelList extends Component<any, any> {
         z1: this.props.z1,
         z2: this.props.z2,
         z3: this.props.z3,
+        z4: this.props.z4,
         f1: this.props.f1,
         f2: this.props.f2,
         f3: this.props.f3,
+        f4: this.props.f4,
         type: this.props.type,//赛段
         check: true, //防误删开关,true为不可修改
         teamZ: [],
@@ -179,6 +181,18 @@ export default class PersonnelList extends Component<any, any> {
                                 onFocus={() => this.setState({ changeId: 'z3' })}
                             ></Select>
                         </div>
+
+                        {/*四辩 */}
+                        <div className={styles.Row}>
+                            <Text>正方四辩：</Text>
+                            <Select placeholder='请选择' id='z4'
+                                style={{ width: 120 }}
+                                value={this.state.z4}
+                                optionList={this.state.teamZ}
+                                onChange={(e) => this.onChange(e)}
+                                onFocus={() => this.setState({ changeId: 'z4' })}
+                            ></Select>
+                        </div>
                     </div>
 
                     {/*右侧反 */}
@@ -222,11 +236,21 @@ export default class PersonnelList extends Component<any, any> {
                                 onFocus={() =>this.setState({ changeId: 'f3'})}
                             ></Select>
                         </div>
+
+                        {/*四辩 */}
+                        <div className={styles.Row}>
+                            <Text>反方四辩：</Text>
+                            <Select placeholder='请选择' id='f4'
+                                style={{ width: 120 }}
+                                value={this.state.f4}
+                                optionList={this.state.teamF}
+                                onChange={(e) => this.onChange(e)}
+                                onFocus={() =>this.setState({ changeId: 'f4'})}
+                            ></Select>
+                        </div>
                     </div>
 
                 </div>
-
-
             </div>
         )
     }

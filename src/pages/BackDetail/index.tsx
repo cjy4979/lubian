@@ -4,7 +4,6 @@ import { ColumnProps } from 'antd/es/table';
 import { history } from 'umi';
 import moment from 'moment';
 import styles from './Statistics.less'
-import onlineLogo from '@/images/online.png'
 
 const { Content, Footer } = Layout;
 
@@ -29,9 +28,11 @@ export default function index() {
         'z1': '正方一辩',
         'z2': '正方二辩',
         'z3': '正方三辩',
+        'z4': '正方四辩',
         'f1': '反方一辩',
         'f2': '反方二辩',
         'f3': '反方三辩',
+        'f4': '反方四辩',
     }
 
     const colorArr = [
@@ -87,23 +88,11 @@ export default function index() {
         key: 'win',
         dataIndex: 'win',
         render: winner => {
-
-            let arr = winner.split('@')
             return (
                 <span>
                     <div>
-                        <Tag color={arr[0] === '正' ? colorArr[1] : colorArr[2]} >
-                            内容票：{arr[0]}
-                        </Tag>
-                    </div>
-                    <div style={{ marginTop: '4px' }}>
-                        <Tag color={arr[1] === '正' ? colorArr[1] : colorArr[2]} >
-                            环节票：{arr[1]}
-                        </Tag>
-                    </div>
-                    <div style={{ marginTop: '4px' }}>
-                        <Tag color={arr[2] === '正' ? colorArr[1] : colorArr[2]} >
-                            决胜票：{arr[2]}
+                        <Tag color={winner === '正' ? colorArr[1] : colorArr[2]} >
+                            {winner}方
                         </Tag>
                     </div>
                 </span>
@@ -120,6 +109,10 @@ export default function index() {
         render: best => {
             let FinalDebater = bestDebater[best as keyof typeof bestDebater];
             return (
+                best === '' ?
+                <div style={{ color: '#ff4d4f', fontSize: '18px' }}>
+                    弃票
+                </div>:
                 <div style={best.substr(0, 1) === 'z' ? { color: '#00b483', fontSize: '18px' } : { color: '#7991d1', fontSize: '18px' }}>
                     {FinalDebater}
                 </div>
@@ -143,8 +136,7 @@ export default function index() {
         <div className={styles.background}>
             <Layout style={{ backgroundColor: '	#FCFCFC' }}>
                 <header className={styles.header}>
-                    <img className={styles.logo} src={onlineLogo} alt="online" />
-                    <div className={styles.title}>深语赛果统计</div>
+                    <div className={styles.title}>鲁辩齐思辩论赛赛果统计</div>
                 </header>
                 <Content className="site-layout" style={{ padding: '0 50px', marginTop: 32, backgroundColor: '	#FCFCFC' }}>
                     <Table columns={columns}
@@ -160,7 +152,7 @@ export default function index() {
                         dataSource={dataSourse}
                     />
                 </Content>
-                <Footer style={{ textAlign: 'center', backgroundColor: '	#FCFCFC' }}>深语10.0  @2022 by online项目部</Footer>
+                <Footer style={{ textAlign: 'center', backgroundColor: '#FCFCFC' }}>第二届鲁辩齐思辩论赛@2022 producted by Jiyu Chen</Footer>
             </Layout>
 
         </div>

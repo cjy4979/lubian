@@ -3,6 +3,8 @@ import { Layout, Nav, Button, Avatar, Toast, Icon, Dropdown, Tag } from '@douyin
 import { IconSemiLogo, IconHelpCircle, IconUserGroup, IconHistogram, IconCalendarClock, IconUserSetting, IconFile, IconExit } from '@douyinfe/semi-icons';
 import { history } from 'umi'
 import { getCookie, removeCookie } from '@/utils/auth';
+import Logo from '@/images/lubianLogo.png'
+import styles from './Header.less'
 //rights:权限：1为超级管理员，有全部权限，2为项目部成员，不能访问赛事列表和队伍筛选，0为新媒体，只能访问赛果单
 
 
@@ -32,81 +34,79 @@ export default class Header extends Component<any, any> {
             }
         )
     }
-    
+
 
     render() {
         const { Header } = Layout;
         return (
             <Header style={{ backgroundColor: 'var(--semi-color-bg-1)', width: '100%' }}>
-                    <Nav mode="horizontal" selectedKeys={this.state.selectedKeys} style={{overflow:'auto'}}>
-                        <Nav.Header>
-                            <Icon svg={<PetIcon />} 
-                            //onClick={() => history.push("/try")}
-                            />
-                        </Nav.Header>
+                <Nav mode="horizontal" selectedKeys={this.state.selectedKeys} style={{ overflow: 'auto' }}>
+                    <Nav.Header>
+                        <img className={styles.logo} src={Logo} alt="鲁辩" />
+                    </Nav.Header>
 
-                        <Nav.Item itemKey="Schedule" text="赛程"
-                            icon={<IconCalendarClock size="large" />}
-                            onClick={() => {
-                                this.setState({ selectedKeys: ['Schedule'] })
-                                history.push('/schedule')
+                    <Nav.Item itemKey="Schedule" text="赛程"
+                        icon={<IconCalendarClock size="large" />}
+                        onClick={() => {
+                            this.setState({ selectedKeys: ['Schedule'] })
+                            history.push('/schedule')
+                        }}
+                    />
+                    <Nav.Item itemKey="Result" text="赛果"
+                        icon={<IconHistogram size="large" />}
+                        onClick={() => {
+                            this.setState({ selectedKeys: ['Result'] })
+                            history.push('/statistics')
+                        }}
+                    />
+                    <Nav.Item itemKey="Work" text="人员安排"
+                        style={this.state.rights === '0' ? { display: 'none' } : {}}
+                        icon={<IconUserSetting size="large" />}
+                        onClick={() => {
+                            this.setState({ selectedKeys: ['Work'] })
+                            history.push('/work')
+                        }}
+                    />
+                    <Nav.Item itemKey="Team" text="队伍筛选"
+                        style={this.state.rights !== '1' ? { display: 'none' } : {}}
+                        icon={<IconFile size="large" />}
+                        onClick={() => {
+                            this.setState({ selectedKeys: ['Team'] })
+                            history.push('/team')
+                        }}
+                    />
+                    <Nav.Item itemKey="personnel" text="对阵双方"
+                        style={this.state.rights === '0' ? { display: 'none' } : {}}
+                        icon={<IconUserGroup size="large" />}
+                        onClick={() => {
+                            this.setState({ selectedKeys: ['personnel'] })
+                            history.push('/personnel')
+                        }}
+                    />
+                    <Nav.Footer>
+                        <Button
+                            theme="borderless"
+                            icon={<IconExit size="large" />}
+                            style={{
+                                color: 'var(--semi-color-text-2)',
+                                marginRight: '12px',
                             }}
+                            onClick={() => this.onLogout()}
                         />
-                        <Nav.Item itemKey="Result" text="赛果"
-                            icon={<IconHistogram size="large" />}
-                            onClick={() => {
-                                this.setState({ selectedKeys: ['Result'] })
-                                history.push('/statistics')
+                        <Button
+                            theme="borderless"
+                            icon={<IconHelpCircle size="large" />}
+                            style={{
+                                color: 'var(--semi-color-text-2)',
+                                marginRight: '12px',
                             }}
-                        />
-                        <Nav.Item itemKey="Work" text="人员安排"
-                            style={this.state.rights === '0' ? { display: 'none' } : {}}
-                            icon={<IconUserSetting size="large" />}
-                            onClick={() => {
-                                this.setState({ selectedKeys: ['Work'] })
-                                history.push('/work')
-                            }}
-                        />
-                        <Nav.Item itemKey="Team" text="队伍筛选"
-                            style={this.state.rights !== '1' ? { display: 'none' } : {}}
-                            icon={<IconFile size="large" />}
-                            onClick={() => {
-                                this.setState({ selectedKeys: ['Team'] })
-                                history.push('/team')
-                            }}
-                        />
-                        <Nav.Item itemKey="personnel" text="对阵双方"
-                            style={this.state.rights === '0' ? { display: 'none' } : {}}
-                            icon={<IconUserGroup size="large" />}
-                            onClick={() => {
-                                this.setState({ selectedKeys: ['personnel'] })
-                                history.push('/personnel')
-                            }}
-                        />
-                        <Nav.Footer>
-                            <Button
-                                theme="borderless"
-                                icon={<IconExit size="large" />}
-                                style={{
-                                    color: 'var(--semi-color-text-2)',
-                                    marginRight: '12px',
-                                }}
-                                onClick={() => this.onLogout()}
-                            />
-                            <Button
-                                theme="borderless"
-                                icon={<IconHelpCircle size="large" />}
-                                style={{
-                                    color: 'var(--semi-color-text-2)',
-                                    marginRight: '12px',
-                                }}
                             onClick={() => history.push("/try")}
-                            />
-                            <Avatar color={this.state.rights === '1' ? 'pink' : this.state.rights === '0' ? 'light-green' : 'light-blue'} size="small">
-                                {this.state.rights === '1' ? '管理' : this.state.rights === '0' ? '媒体' : '项目'}
-                            </Avatar>
-                        </Nav.Footer>
-                    </Nav>
+                        />
+                        <Avatar color={this.state.rights === '1' ? 'pink' : this.state.rights === '0' ? 'light-green' : 'light-blue'} size="small">
+                            {this.state.rights === '1' ? '管理' : this.state.rights === '0' ? '媒体' : '赛事'}
+                        </Avatar>
+                    </Nav.Footer>
+                </Nav>
 
             </Header>
         )

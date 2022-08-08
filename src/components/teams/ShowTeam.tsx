@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './AddTeam.less'
-import { Radio, RadioGroup, Select, Toast } from '@douyinfe/semi-ui';
-
+import { Radio, RadioGroup, Toast } from '@douyinfe/semi-ui';
+import { Select } from 'antd'
 
 export default class ShowTeam extends Component<any, any> {
 
@@ -141,7 +141,7 @@ export default class ShowTeam extends Component<any, any> {
                                 <Select placeholder='请选择队伍编号'
                                     style={{ width: 100 }}
                                     value={this.props.type}
-                                    optionList={t24}
+                                    options={t24}
                                     onChange={(e) => this.onCodeChange(e)}
                                 >
 
@@ -150,15 +150,7 @@ export default class ShowTeam extends Component<any, any> {
                                 ''
                             }
                             <div className={styles.showTeamName}>
-                                {this.props.team}
-                            </div>
-                            <div>
-                                <RadioGroup onChange={(e) => this.onChange(e)} value={this.props.selected} name="demo-radio-group">
-                                    <Radio value={0} style={{ display: 'none' }}>未筛选</Radio>
-                                    <Radio value={1}>通过</Radio>
-                                    <Radio value={2}>拒绝</Radio>
-                                    <Radio value={3}>待定</Radio>
-                                </RadioGroup>
+                                <input id='team' readOnly value={this.props.team} />
                             </div>
                             <div className={styles.buttonDiv2} >
                                 <button className={styles.button2} onClick={() => this.Delete()}>
@@ -168,22 +160,21 @@ export default class ShowTeam extends Component<any, any> {
                         </h1>
 
                         <div className={styles.showleaderRow}>
-                            <div>
-                                领队：
-                                {this.props.leader}
-                            </div>
-                            <div>
-                                手机：
-                                {this.props.phone}
-                            </div>
-                            <div>
-                                微信：
-                                {this.props.wechat}
-                            </div>
-                            <div>
-                                QQ：
-                                {this.props.QQ}
-                            </div>
+                        <div style={{ minWidth: '50px', marginLeft: '20px ' }}>
+                                    领队:
+                                </div>
+                                <input id='leader'
+                                    readOnly
+                                    style={this.props.leader === '' ? { color: 'red' } : { color: '' }}
+                                    value={this.props.leader === '' ? '请检查表格' : this.props.leader} />
+                                <div style={{ minWidth: '50px' }}>
+                                    手机:
+                                </div>
+                                <input id='phone' readOnly value={this.props.phone} />
+                                <div>
+                                    QQ:
+                                </div>
+                                <input id='QQ' readOnly value={this.props.QQ} />
                         </div>
 
                         {/* 成员展示列表 */}
@@ -197,14 +188,14 @@ export default class ShowTeam extends Component<any, any> {
                                         <th className={styles.name}>
                                             姓名
                                         </th>
+                                        <th className={styles.grade}>
+                                            年级
+                                        </th>
                                         <th className={styles.school}>
                                             学校
                                         </th>
                                         <th className={styles.debate}>
                                             辩论履历
-                                        </th>
-                                        <th className={styles.theme}>
-                                            主题履历
                                         </th>
                                     </tr>
 
@@ -218,6 +209,11 @@ export default class ShowTeam extends Component<any, any> {
                                                 {this.props.member1}
                                             </div>
                                         </td>
+                                        <td className={styles.grade1}>
+                                            <div style={{ width: '90%' }}>
+                                                {this.props.grade1}
+                                            </div>
+                                        </td>
                                         <td>
                                             <div style={{ width: '90%' }}>
                                                 {this.props.school1}
@@ -228,13 +224,6 @@ export default class ShowTeam extends Component<any, any> {
                                                 {this.props.debate1}
                                             </div>
                                         </td>
-                                        <td className={styles.theme1}>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.theme1}
-                                            </div>
-
-                                        </td>
-
                                     </tr>
 
                                     {/* 成员2信息 */}
@@ -244,6 +233,11 @@ export default class ShowTeam extends Component<any, any> {
                                         </td>
                                         <td>
                                             {this.props.member2}
+                                        </td>
+                                        <td className={styles.grade1}>
+                                            <div style={{ width: '90%' }}>
+                                                {this.props.grade2}
+                                            </div>
                                         </td>
                                         <td>
                                             <div style={{ width: '90%' }}>
@@ -255,12 +249,6 @@ export default class ShowTeam extends Component<any, any> {
                                                 {this.props.debate2}
                                             </div>
                                         </td>
-                                        <td className={styles.theme1}>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.theme2}
-                                            </div>
-                                        </td>
-
                                     </tr>
 
                                     {/* 成员3信息 */}
@@ -270,6 +258,11 @@ export default class ShowTeam extends Component<any, any> {
                                         </td>
                                         <td>
                                             {this.props.member3}
+                                        </td>
+                                        <td className={styles.grade1}>
+                                            <div style={{ width: '90%' }}>
+                                                {this.props.grade3}
+                                            </div>
                                         </td>
                                         <td>
                                             <div style={{ width: '90%' }}>
@@ -281,12 +274,6 @@ export default class ShowTeam extends Component<any, any> {
                                                 {this.props.debate3}
                                             </div>
                                         </td>
-                                        <td className={styles.theme1}>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.theme3}
-                                            </div>
-                                        </td>
-
                                     </tr>
 
                                     {/* 成员4信息 */}
@@ -298,19 +285,19 @@ export default class ShowTeam extends Component<any, any> {
                                             <td>
                                                 {this.props.member4}
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.grade4}
+                                                </div>
+                                            </td>
                                             <td>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.school4}
-                                            </div>
-                                        </td>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.school4}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.props.debate4}
-                                                </div>
-                                            </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.props.theme4}
                                                 </div>
                                             </td>
 
@@ -326,19 +313,19 @@ export default class ShowTeam extends Component<any, any> {
                                             <td>
                                                 {this.props.member5}
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.grade5}
+                                                </div>
+                                            </td>
                                             <td>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.school5}
-                                            </div>
-                                        </td>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.school5}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.props.debate5}
-                                                </div>
-                                            </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.props.theme5}
                                                 </div>
                                             </td>
 
@@ -354,19 +341,19 @@ export default class ShowTeam extends Component<any, any> {
                                             <td>
                                                 {this.props.member6}
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.grade6}
+                                                </div>
+                                            </td>
                                             <td>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.school6}
-                                            </div>
-                                        </td>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.school6}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.props.debate6}
-                                                </div>
-                                            </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.props.theme6}
                                                 </div>
                                             </td>
 
@@ -382,19 +369,19 @@ export default class ShowTeam extends Component<any, any> {
                                             <td>
                                                 {this.props.member7}
                                             </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.grade7}
+                                                </div>
+                                            </td>
                                             <td>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.school7}
-                                            </div>
-                                        </td>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.school7}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.props.debate7}
-                                                </div>
-                                            </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.props.theme7}
                                                 </div>
                                             </td>
 
@@ -410,19 +397,19 @@ export default class ShowTeam extends Component<any, any> {
                                             <td>
                                                 {this.props.member8}
                                             </td>
-                                            <td>
-                                            <div style={{ width: '90%' }}>
-                                                {this.props.school8}
-                                            </div>
-                                        </td>
+                                            <td className={styles.grade1}>
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.grade8}
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div style={{ width: '90%' }}>
+                                                    {this.props.school8}
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div style={{ width: '90%' }}>
                                                     {this.props.debate8}
-                                                </div>
-                                            </td>
-                                            <td className={styles.theme1}>
-                                                <div style={{ width: '90%' }}>
-                                                    {this.props.theme8}
                                                 </div>
                                             </td>
 
@@ -433,7 +420,7 @@ export default class ShowTeam extends Component<any, any> {
                         </div>
 
 
-                        {/* {
+                        {
                                 this.props.topic1 === '' ?
                                     <h1>
                                         无
@@ -485,7 +472,7 @@ export default class ShowTeam extends Component<any, any> {
                                             </tbody>
                                         </table>
                                     </div>
-                            } */}
+                            }
 
                     </div>
                 </div>

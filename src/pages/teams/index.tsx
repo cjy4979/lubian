@@ -171,34 +171,16 @@ export default function index() {
             items={[
               {
                 itemKey: 'add',
-                text: '添加队伍',
+                text: '更新队伍',
                 icon: <IconUserAdd />
               }, 
               {
-                itemKey: '0',
-                text: '未筛选('+unListData.length+')',
-                items: unListData,
-                icon: <Icon svg={<UnhandleIcon />} />
-              }, 
-              {
                 itemKey: '1',
-                text: '通过(' + passedListData.length + '/24)',
+                text: '队伍(' + passedListData.length + '/24)',
                 items: passedListData,
                 icon: <Icon svg={<PassIcon />} />,
                 maxHeight:'100%'
-              }, 
-              {
-                itemKey: '2',
-                text: '落选('+deniedListData.length +')',
-                items: deniedListData,
-                icon: <Icon svg={<DenyIcon />} />
-              }, 
-              {
-                itemKey: '3',
-                text: '待定('+holdListData+')',
-                items: holdListData,
-                icon: <Icon svg={<HoldIcon />} />
-              },
+              }
 
             ]}
             onClick={data => onClick(data)}

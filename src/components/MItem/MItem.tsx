@@ -5,7 +5,7 @@ import moment from 'moment';
 
 export default class MItem extends Component<any, any> {
     render() {
-        let win = this.props.win.split('@')
+        let win = this.props.win
         let best = this.props.best
         let name = this.props.name
         let time = moment(this.props.time).format('M月D日 HH:mm:ss')
@@ -15,9 +15,11 @@ export default class MItem extends Component<any, any> {
             'z1': '正方一辩',
             'z2': '正方二辩',
             'z3': '正方三辩',
+            'z4': '正方四辩',
             'f1': '反方一辩',
             'f2': '反方二辩',
             'f3': '反方三辩',
+            'f4': '反方四辩',
 
         }
 
@@ -49,27 +51,19 @@ export default class MItem extends Component<any, any> {
                     <div className={styles.cell} >
                         <span>
                             <div>
-                                <Tag color={win[0] === '正' ? 'green' : 'geekblue'} >
-                                    内容票：{win[0]}
-                                </Tag>
-                            </div>
-                            <div style={{ marginTop: '4px' }}>
-                                <Tag color={win[1] === '正' ? 'green' : 'geekblue'} >
-                                    环节票：{win[1]}
-                                </Tag>
-                            </div>
-                            <div style={{ marginTop: '4px' }}>
-                                <Tag color={win[2] === '正' ? 'green' : 'geekblue'} >
-                                    决胜票：{win[2]}
+                                <Tag color={win === '正' ? 'green' : 'geekblue'} >
+                                    {win[0]}方
                                 </Tag>
                             </div>
                         </span>
                     </div>
                     {/* 佳辩 */}
                     <div className={styles.cell} >
-                        <div style={best.substr(0, 1) === 'z' ? { color: '#00b483', fontSize: '18px' } : { color: '#7991d1', fontSize: '18px' }}>
-                            {bestDebater[best as keyof typeof bestDebater]}
-                        </div>
+                        {best === '' ? <div style={{ color: '#ff4d4f', fontSize: '18px' }}> 弃票</div> :
+                            <div style={best.substr(0, 1) === 'z' ? { color: '#00b483', fontSize: '18px' } : { color: '#7991d1', fontSize: '18px' }}>
+                                {bestDebater[best as keyof typeof bestDebater]}
+                            </div>}
+
 
                     </div>
                 </div>

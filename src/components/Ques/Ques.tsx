@@ -10,9 +10,7 @@ export default class Ques extends Component {
     state = {
         name: '',
         debater: '',
-        NeiRong: '',
-        HuanJie: '',
-        JueSheng: ''
+        win: '',
     }
     Submit = () => {
         message.destroy();
@@ -24,24 +22,22 @@ export default class Ques extends Component {
             message.error("请检查您的姓名格式")
         } else if (name.length === 0) {
             message.error("请输入姓名")
-        } else if (this.state.NeiRong === '') {
-            message.error("请投出内容票")
-        } else if (this.state.HuanJie === '') {
-            message.error("请投出环节票")
-        } else if (this.state.JueSheng === '') {
-            message.error("请投出决胜票")
-        } else if (debater === '') {
-            message.error("请选择最佳辩手归属")
-        } else {
+        } else if (this.state.win === '') {
+            message.error("请投出您的票型")
+        }
+        // else if (debater === '') {
+        //     message.error("请选择最佳辩手归属")
+        // } 
+        else {
             //备用库提交
             fetch('/api/backsubmit?name=' + this.state.name +
-                '&win=' + this.state.NeiRong + '@' + this.state.HuanJie + '@' + this.state.JueSheng +
+                '&win=' + this.state.win +
                 '&best=' + debater
             )
 
             //主库提交
             fetch('/api/submit?name=' + this.state.name +
-                '&win=' + this.state.NeiRong + '@' + this.state.HuanJie + '@' + this.state.JueSheng +
+                '&win=' + this.state.win +
                 '&best=' + debater
 
                 , {
@@ -70,20 +66,10 @@ export default class Ques extends Component {
     //获胜方
     NeiRong = (e: RadioChangeEvent) => {
         this.setState({
-            NeiRong: e.target.value,
+            win: e.target.value,
         })
     };
 
-    HuanJie = (e: RadioChangeEvent) => {
-        this.setState({
-            HuanJie: e.target.value,
-        })
-    };
-    JueSheng = (e: RadioChangeEvent) => {
-        this.setState({
-            JueSheng: e.target.value,
-        })
-    };
 
     onChangeName = (e: { target: { value: any; }; }) => {
         this.setState({
@@ -105,38 +91,13 @@ export default class Ques extends Component {
                     <p className={styles.qustionText}>2.请您综合双方场上表现投出本场获胜方：</p>
                     <div className={styles.winner}>
                         <div>
-                            内容票：
-                            <Radio.Group onChange={(e) => this.NeiRong(e)} value={this.state.NeiRong}
+                            <Radio.Group onChange={(e) => this.NeiRong(e)} value={this.state.win}
                                 style={{ marginLeft: '5px' }}
                             >
                                 {/* <Radio.Group  value={this.state.value}> */}
-                                <Space >
-                                    <Radio value={'正'} defaultChecked={false} style={{ fontSize: "16px" }}>正方</Radio>
-                                    <Radio value={'反'} defaultChecked={false} style={{ fontSize: "16px" }}>反方</Radio>
-                                </Space>
-                            </Radio.Group>
-                        </div>
-                        <div style={{ marginTop: '3px' }}>
-                            环节票：
-                            <Radio.Group onChange={(e) => this.HuanJie(e)} value={this.state.HuanJie}
-                                style={{ marginLeft: '5px' }}
-                            >
-                                {/* <Radio.Group  value={this.state.value}> */}
-                                <Space >
-                                    <Radio value={'正'} defaultChecked={false} style={{ fontSize: "16px" }}>正方</Radio>
-                                    <Radio value={'反'} defaultChecked={false} style={{ fontSize: "16px" }}>反方</Radio>
-                                </Space>
-                            </Radio.Group>
-                        </div>
-                        <div style={{ marginTop: '3px' }}>
-                            决胜票：
-                            <Radio.Group onChange={(e) => this.JueSheng(e)} value={this.state.JueSheng}
-                                style={{ marginLeft: '5px' }}
-                            >
-                                {/* <Radio.Group  value={this.state.value}> */}
-                                <Space >
-                                    <Radio value={'正'} defaultChecked={false} style={{ fontSize: "16px" }}>正方</Radio>
-                                    <Radio value={'反'} defaultChecked={false} style={{ fontSize: "16px" }}>反方</Radio>
+                                <Space align="baseline">
+                                    <Radio value={'正'} defaultChecked={false} ></Radio><p style={{verticalAlign:'bottom'}}>正方</p>
+                                    <Radio value={'反'} defaultChecked={false} style={{marginLeft:'15px'}}></Radio><p style={{verticalAlign:'bottom'}}>反方</p>
                                 </Space>
                             </Radio.Group>
                         </div>
@@ -146,7 +107,7 @@ export default class Ques extends Component {
 
                 {/* 佳辩 */}
                 <div className={styles.q3} style={{ marginTop: "10px" }}>
-                    <p className={styles.qustionText}>3.您有一票最佳辩手归属票，请综合选手表现投出您的佳辩票：</p>
+                    <p className={styles.qustionText}>3.您有一票最佳辩手归属票，请综合选手表现投出您的佳辩票也可以选择弃票：</p>
                     <div className={styles.vote} >
 
                         <div className={styles.FinalQ3}>
@@ -173,6 +134,13 @@ export default class Ques extends Component {
                                     <LikeTwoTone twoToneColor="#ffb6b9" style={{ visibility: this.state.debater === 'z3' ? 'visible' : 'hidden' }} />
                                     <div className={styles.JuesaiName}>正方三辩</div>
                                 </div>
+                                <div className={styles.FinalDebater}
+                                    onClick={() => { this.setState({ debater: 'z4' }) }}
+                                    style={{ color: this.state.debater === 'z4' ? '#ffb6b9' : '' }}
+                                >
+                                    <LikeTwoTone twoToneColor="#ffb6b9" style={{ visibility: this.state.debater === 'z4' ? 'visible' : 'hidden' }} />
+                                    <div className={styles.JuesaiName}>正方四辩</div>
+                                </div>
                             </div>
 
                             <div className={styles.FinalF}>
@@ -197,15 +165,20 @@ export default class Ques extends Component {
                                     <LikeTwoTone twoToneColor="#ffb6b9" style={{ visibility: this.state.debater === 'f3' ? 'visible' : 'hidden' }} />
                                     <div className={styles.JuesaiName}>反方三辩</div>
                                 </div>
+                                <div className={styles.FinalDebater}
+                                    onClick={() => { this.setState({ debater: 'f4' }) }}
+                                    style={{ color: this.state.debater === 'f4' ? '#ffb6b9' : '' }}
+                                >
+                                    <LikeTwoTone twoToneColor="#ffb6b9" style={{ visibility: this.state.debater === 'f4' ? 'visible' : 'hidden' }} />
+                                    <div className={styles.JuesaiName}>反方四辩</div>
+                                </div>
                             </div>
 
 
                         </div>
                     </div>
                 </div>
-
-
-                <Button type="primary" ghost className={styles.submit} onClick={this.Submit} >提交</Button>
+                <button className={styles.btn} onClick={this.Submit}>提交</button>
             </div>
         )
     }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Pagination, Divider } from 'antd';
 import MItem from '@/components/MItem/MItem'
 import styles from './Mobile.less'
-import onlineLogo from '@/images/online.png'
+
 
 
 export default function Mobile() {
@@ -26,8 +26,7 @@ export default function Mobile() {
 
     return (
         <div className={styles.back}>
-            <img className={styles.logo} src={onlineLogo} alt="online" />
-            <div className={styles.title}>深语赛果统计</div>
+            <div className={styles.title}>鲁辩齐思辩论赛赛果统计</div>
             <Divider />
             <div style={{ marginTop: '5px', width: '80%' }}>
                 {dataSourse.map((item) => {
